@@ -1,0 +1,80 @@
+<header class="jumbotron text-center">
+  <h1>{{title}}</h1>
+  <div class="col-8 mx-auto">{{storageservice.username|titlecase}}</div>
+</header>
+<div>
+
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <ul class="navbar-nav">
+      <li class="nav-item ">
+        <a [routerLink]="['home']" class="nav-link " role="button">Home</a>
+      </li>
+
+      <li class="nav-item dropdown" *ngIf="!storageservice.loginflag">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" (click)="role='donor'" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Donor
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" *ngIf="role == 'donor' " [routerLink]="['register-donor']">Register</a>
+          <a class="dropdown-item" [routerLink]="['login']">Login</a>
+        </div>
+      </li>
+
+      <li *ngIf="storageservice.loginflag && storageservice.role=='donor' " class="nav-item">
+        <a [routerLink]="['donor']" class="nav-link" role="button">Donate</a>
+      </li>
+
+      <li class="nav-item dropdown" *ngIf="!storageservice.loginflag">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Ask Help
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" [routerLink]="['register-needypeople']">Register</a>
+          <a class="dropdown-item" [routerLink]="['login']">Login</a>
+        </div>
+      </li>
+
+      <li *ngIf="storageservice.loginflag && storageservice.role=='needy' " class="nav-item">
+        <a [routerLink]="['needypeople']" class="nav-link" role="button">Ask Help</a>
+      </li>
+
+
+      <li class="nav-item dropdown" *ngIf="!storageservice.loginflag">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Work with us
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" [routerLink]="['add-employee']">Register</a>
+          <a class="dropdown-item" [routerLink]="['login']">Login</a>
+        </div>
+      </li>
+      
+      <li *ngIf="storageservice.loginflag && storageservice.role=='employee' " class="nav-item">
+        <a [routerLink]="['request-status']" class="nav-link" role="button">View Requests</a>
+      </li>
+      <li *ngIf="storageservice.loginflag && storageservice.role=='employee' " class="nav-item">
+        <a [routerLink]="['view-needypeople']" class="nav-link" role="button">View Needy People</a>
+      </li>
+
+      <li class="nav-item dropdown" *ngIf="!storageservice.loginflag">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Admin
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" [routerLink]="['login']">Login</a>
+        </div>
+      </li>
+      
+      <li *ngIf="storageservice.loginflag && storageservice.role=='admin' " class="nav-item">
+        <a [routerLink]="['view-all-employee']" class="nav-link" role="button">View Employees</a>
+      </li>
+
+      <li *ngIf="storageservice.loginflag" class="nav-item">
+        <a (click)="logout()" class="nav-link" role="button">Logout</a>
+      </li>
+
+    </ul>
+  </nav>
+
+</div>
+<router-outlet></router-outlet>

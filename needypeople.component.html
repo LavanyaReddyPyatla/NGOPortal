@@ -1,0 +1,31 @@
+<div class ="container">
+    
+    <div class ="container">
+    <h2 class="test-center">Add Request</h2>
+    <div class="alert alert-success" *ngIf="msg !=undefined"> {{msg}}</div>
+    <div class="alert alert-danger" *ngIf="errorMsg != undefined">{{errorMsg}}</div>
+    
+    <form #frm="ngForm" (ngSubmit)="addRequestForHelp()">
+        <!-- <div>Request ID:</div>
+        <div><input type="number" name="rid" [(ngModel)]="request.id" required #modelaid="ngModel" class="form-control"></div>
+        <div class="alert alert-danger" *ngIf="modelaid.invalid && modelaid.touched">Request ID is Required</div> -->
+
+        <div>Title of the Request:</div>
+        <div><input type="text" name="rtitle" [(ngModel)]="request.title" required #mltitle="ngModel" class="form-control"/></div>
+        <div class="alert alert-danger" *ngIf="mltitle.invalid && mltitle.touched">Title of the Request is Required</div>
+
+        <div>Description:</div>
+        <div><textarea  name="desc" [(ngModel)]="request.description" required #mldesc="ngModel" class="form-control"></textarea></div>
+        <div class="alert alert-danger" *ngIf="mldesc.invalid && mldesc.touched">Description is Required</div>
+
+        <div>Amount:</div>
+        <div><input type="number" name="amt" [(ngModel)]="request.goal" required #mlbal="ngModel" class="form-control"/></div>
+        <div class="alert alert-danger" *ngIf="mlbal.invalid && mlbal.touched">Amount is Required</div>
+
+        
+
+        <div class="mt-2 text-center"><input type="submit" value="Add Request" [disabled]="!frm.valid" class="btn btn-danger"/> </div>
+    </form>
+
+    </div>
+</div>

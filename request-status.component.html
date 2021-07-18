@@ -1,0 +1,45 @@
+<div class="bg-aquamarine">
+    
+    <div class="alert alert-success" *ngIf="msg !=undefined"> {{msg}}</div>
+    <div class="alert alert-danger" *ngIf="errorMsg != undefined">{{errorMsg}}</div>
+
+    <div class="container">
+        <div class="mt-2 text-center">
+            <h1>View NeedyPeople Requests</h1>
+        </div>
+        <div>
+            <nav class="navbar">
+              <input class="form-control" name="id" [(ngModel)]="id" (ngModelChange)="search()" placeholder="Enter id to Search">
+            </nav>
+          </div>
+          
+
+        <table class="table table-primary table-striped table-hover col-md-8 mx-auto mt-3" border="1">
+
+            <tr>
+                <th>requestId</th>
+                <th>Request</th>
+                <th>Description</th>
+                <th>Amount</th>
+                <th>Status</th>
+                <th>Approve/Disapprove</th>
+            </tr>
+            <tr class=success *ngFor="let request of requests">
+
+                <td>{{request.id}}</td>
+                <td>{{request.title.toUpperCase()}}</td>
+                <td>{{request.description}}</td>
+                <td>{{request.goal}}</td>
+                <td>{{request.status}}</td>
+                <td><button (click)="request.status=true" (click)="updateStatus(request)" value="Approve"
+                        class="btn btn-success">Approve</button>
+                    <button (click)="request.status=false" (click)="updateStatus(request)" value="Reject"
+                        class="btn btn-danger">Reject</button>
+                </td>
+
+            </tr>
+
+
+
+
+        </table>

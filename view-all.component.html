@@ -1,0 +1,68 @@
+<div class="panel panel-primary" *ngFor="let employee of employees">
+    <div class="panel-heading">
+        <h1 class="panel-title">{{employee.employeeName | titlecase}}</h1>
+    </div>
+    <div class="panel-body">
+        <div class="col-xs-10">
+            <div class="row vertical-align">
+                <div class="col-xs-4">
+                    <img class="imageClass" src="assets/img/image.jpeg" />
+                </div>
+
+
+                <div class="col-xs-8">
+
+                    <div class="row">
+                        <div class="col-xs-6">EmployeeId</div>
+                        <div class="col-xs-6">: {{employee.employeeId}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">Email</div>
+                        <div class="col-xs-6">: {{employee.email}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">Phone</div>
+                        <div class="col-xs-6">: {{employee.phone}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">Username</div>
+                        <div class="col-xs-6">: {{employee.username}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">City</div>
+                        <div class="col-xs-6">: {{employee.address.city}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">State</div>
+                        <div class="col-xs-6">: {{employee.address.state}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">Pin</div>
+                        <div class="col-xs-6">: {{employee.address.pin}}</div>
+                    </div>
+                    <div class="row" >
+                        <div class="col-xs-6">Landmark</div>
+                        <div class="col-xs-6">: {{employee.address.landmark}}</div>
+                    </div>
+
+                    <div class="row" *ngIf = "employee.status">
+                        <div class="col-xs-6">Status</div>
+                        <div class="col-xs-6" > : working</div>
+                    </div>
+
+                    <div class="button">
+                        <button type="button" (click)="deleteEmployee(employee.employeeId)" value="Delete"
+                            class="btn btn-danger">Delete</button>
+
+                        <button (click)="employee.status=true" (click)="updateEmployeeStatus(employee)" value="Approve"
+                            class="btn btn-success">Approve</button>
+
+
+                        <button (click)="employee.status=false" (click)="updateEmployeeStatus(employee)" value="Reject"
+                            class="btn btn-danger">Reject</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

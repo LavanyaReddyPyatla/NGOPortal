@@ -1,0 +1,34 @@
+<div>
+<div class="container ">
+    <h2 class="text-center heading">HELP NEEDY PEOPLE</h2>
+</div>
+<div class="container ">
+<ul class="list-group " *ngFor="let request of requests; index as i">
+    <li class="list-group-item "  *ngIf = "request.status">
+        
+            <div class="media border p-3" >
+                <div class="media-body bg-lightblue">
+                    <h4>{{request.title.toUpperCase()}}</h4>
+                    <p>{{request.description}}</p>
+                    <p>₹{{request.raised}} Raised</p>
+
+                    <div class="form-group ">
+                        <label for="amount">Amount:</label>
+                        <input type="number" class="form-control" [(ngModel)]="request.amount" placeholder="e.g. ₹ 500" />
+                        <small *ngIf="request.msg != undefined" class="text-danger">please enter minimum ₹ 500 and lesser than ₹ {{request.goal-request.raised}}</small>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar bg-success" [ngStyle]="{'width.%':request.raised/request.goal*100}">
+                        </div>
+                    </div>
+                    <p>₹{{request.goal}} Goal</p>
+                    <input type="submit" value="Donate" class="btn btn-success"
+                       
+                    (click)="addAmount(request)"
+                    />
+                </div>
+            </div>
+    </li>
+</ul>
+</div>
+</div>

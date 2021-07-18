@@ -1,0 +1,95 @@
+<div class="alert alert-success" *ngIf="msg !=undefined"> {{msg}}</div>
+<div class="alert alert-danger" *ngIf="errorMsg != undefined">{{errorMsg}}</div>
+
+
+<div *ngIf="updateDiv"> 
+    <Div class="mt-2 text-center" ><H1 >Update</H1> </Div>
+    
+
+    <form #frm="ngForm" (ngSubmit)="updateNeedy()">
+        
+    <div>NeedyPerson Name</div>
+    
+        <div><input type="text" name="cname" [(ngModel)]="modify.needyPersonName" required #mlcname="ngModel" class="form-control"/></div>
+        <div class="alert alert-danger" *ngIf="mlcname.invalid && mlcname.touched"> NeedyPerson Name is required</div>
+
+        <div>Mobile No</div>
+        <div><input type="text" name="nphone" [(ngModel)]="modify.phone" required #mlnphone="ngModel" class="form-control" disabled/></div>
+        <div class="alert alert-danger" *ngIf="mlnphone.invalid && mlnphone.touched"> Mobile No is required</div>
+
+        <div>Family Income</div>
+        <div><input type="text" name="nincome" [(ngModel)]="modify.familyIncome" required #mlnincome="ngModel" class="form-control"/></div>
+        <div class="alert alert-danger" *ngIf="mlnincome.invalid && mlnincome.touched"> Family Income is required</div>
+
+        <div>Email</div>
+        <div><input type="text" name="nemail" [(ngModel)]="modify.email" required #mlnemail="ngModel" class="form-control" disabled/></div>
+        <div class="alert alert-danger" *ngIf="mlnemail.invalid && mlnemail.touched"> Email is required</div>
+
+        <div>City</div>
+        <div><input type="text" name="ncity" [(ngModel)]="modify.address.city" required #mlncity="ngModel" class="form-control"/></div>
+        <div class="alert alert-danger" *ngIf="mlncity.invalid && mlncity.touched"> City is required</div>
+    
+
+        <div>State</div>
+        <div><input type="text" name="nstate" [(ngModel)]="modify.address.state" required #mlnstate="ngModel" class="form-control"/></div>
+        <div class="alert alert-danger" *ngIf="mlnstate.invalid && mlnstate.touched"> State is required</div>
+
+        <div>Pin</div>
+        <div><input type="text" name="npin" [(ngModel)]="modify.address.pin" required #mlnpin="ngModel" class="form-control"/></div>
+        <div class="alert alert-danger" *ngIf="mlnpin.invalid && mlnpin.touched"> PIN is required</div>
+
+        <div>LandMark</div>
+        <div><input type="text" name="nlmark" [(ngModel)]="modify.address.landmark" required #mlnlmark="ngModel" class="form-control"/></div>
+        <div class="alert alert-danger" *ngIf="mlnlmark.invalid && mlnlmark.touched"> LandMark is required</div>
+
+        <div class="mt-2 text-center">
+            <input type="submit" value="update " [disabled]="!frm.valid" class="btn btn-primary"/> 
+            <button type="button" (click)="cancel()" value="Cancel"   class="btn btn-danger">Cancel</button>
+        </div>
+    </form>
+</div>
+
+<div *ngIf="!updateDiv">
+<div class="container">
+    <Div class="mt-2 text-center" ><H1 >View All NeedyPeople.</H1> </Div>
+    <div>
+        <nav class="navbar">
+          <input class="form-control" name="email" [(ngModel)]="email" (ngModelChange)="Search()" placeholder="Enter email to Search">
+        </nav>
+      </div>
+  
+    <table class="table table-primary col-md-8 mx-auto mt-3" border="1">
+
+        <tr>
+            <th>NeedyPeople ID</th>
+            <th>NeedyPeople Name</th>
+            <th>FamilyIncome</th>
+            <th>Email</th>
+            <th>AddressId</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Pin</th>
+            <th>LandMark</th>
+            <th>Operations</th>
+            
+            
+        </tr>
+        <tr class="success" *ngFor="let needypeople of needypeoples" >
+            <td>{{needypeople.needyPersonId}}</td>
+            <td>{{needypeople.needyPersonName | titlecase}}</td>
+            <td>{{needypeople.familyIncome |currency:'INR'}}</td>
+            <td>{{needypeople.email}}</td>
+            <td>{{needypeople.address.addressId}}</td>
+            <td>{{needypeople.address.city}}</td>
+            <td>{{needypeople.address.state}}</td>
+            <td>{{needypeople.address.pin}}</td>
+            <td>{{needypeople.address.landmark}}</td>
+
+            <td>
+                <button type="button" (click)="update(needypeople)" value="update" class="btn btn-success">Update</button>
+            </td>
+        </tr>
+    </table> 
+</div>
+</div>
+

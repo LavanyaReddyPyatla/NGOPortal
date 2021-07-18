@@ -1,0 +1,77 @@
+<div class="container">
+
+    <div class="container">
+        <div class="jumbotron"></div>
+        <h2 class="test-center">Add Needy People</h2>
+        <div class="alert alert-success" *ngIf="msg !=undefined"> {{msg}}</div>
+        <div class="alert alert-danger" *ngIf="errorMsg != undefined">{{errorMsg}}</div>
+
+
+
+        <form #frm="ngForm" (ngSubmit)="addneedypeople()">
+            <!--<div>NeedyPerson Id</div>
+        <div><input type="number" name="nid" [(ngModel)]="needypeople.needyPersonId" required #modelnid="ngModel" class="form-control"></div>
+        <div class="alert alert-danger" *ngIf="modelnid.invalid && modelnid.touched">NeedyPeople ID is required</div>
+        -->
+            <div>NeedyPerson Name</div>
+            <div><input type="text" name="cname" [(ngModel)]="needypeople.needyPersonName" required #mlcname="ngModel"
+                    class="form-control" /></div>
+            <div class="alert alert-danger" *ngIf="mlcname.invalid && mlcname.touched"> NeedyPerson Name is required
+            </div>
+
+            <div>Mobile No</div>
+            <div><input type="text" name="nphone" [(ngModel)]="needypeople.phone" required #mlnphone="ngModel"
+                    class="form-control" /></div>
+            <div class="alert alert-danger" *ngIf="mlnphone.invalid && mlnphone.touched"> Mobile No is required</div>
+
+            <div>Family Income</div>
+            <div><input type="text" name="nincome" [(ngModel)]="needypeople.familyIncome" required #mlnincome="ngModel"
+                    class="form-control" /></div>
+            <div class="alert alert-danger" *ngIf="mlnincome.invalid && mlnincome.touched"> Family Income is required
+            </div>
+
+            <div>Email</div>
+            <div><input type="text" name="nemail" [(ngModel)]="needypeople.email" required #mlnemail="ngModel"
+                    class="form-control" /></div>
+            <div class="alert alert-danger" *ngIf="mlnemail.invalid && mlnemail.touched"> Email is required</div>
+
+            <div>Password</div>
+            <div><input type="password" name="npwd" [(ngModel)]="needypeople.password" required #mlnpwd="ngModel"
+                    class="form-control" /></div>
+            <div class="alert alert-danger" *ngIf="mlnpwd.invalid && mlnpwd.touched"> Password is required</div>
+
+            <div>ConfirmPassword</div>
+            <div><input type="password" name="nconfirmpwd" [(ngModel)]="needypeople.confirmpassword"
+                    #mlnconfirmpwd="ngModel" required compare-to="needypeople.passowrd" class="form-control" /></div>
+            <div class="alert alert-danger" *ngIf="mlnconfirmpwd.invalid && mlnconfirmpwd.touched"> Please re-enter the
+                password </div>
+            <div class="alert alert-danger" *ngIf="mlnconfirmpwd.value !=mlnpwd.value">Password and Confirm Password
+                must be match.</div>
+
+            <div>City</div>
+            <div><input type="text" name="ncity" [(ngModel)]="needypeople.city" required #mlncity="ngModel"
+                    class="form-control" /></div>
+            <div class="alert alert-danger" *ngIf="mlncity.invalid && mlncity.touched"> City is required</div>
+
+
+            <div>State</div>
+            <div><input type="text" name="nstate" [(ngModel)]="needypeople.state" required #mlnstate="ngModel"
+                    class="form-control" /></div>
+            <div class="alert alert-danger" *ngIf="mlnstate.invalid && mlnstate.touched"> State is required</div>
+
+            <div>Pin</div>
+            <div><input type="text" name="npin" [(ngModel)]="needypeople.pin" required #mlnpin="ngModel"
+                    class="form-control" /></div>
+            <div class="alert alert-danger" *ngIf="mlnpin.invalid && mlnpin.touched"> PIN is required</div>
+
+            <div>LandMark</div>
+            <div><input type="text" name="nlmark" [(ngModel)]="needypeople.landmark" required #mlnlmark="ngModel"
+                    class="form-control" /></div>
+            <div class="alert alert-danger" *ngIf="mlnlmark.invalid && mlnlmark.touched"> LandMark is required</div>
+
+            <div class="mt-2 text-center"><input type="submit" value="Add NeedyPeople" [disabled]="!frm.valid"
+                    class="btn btn-primary" /> </div>
+        </form>
+    </div>
+</div>
+</div>
